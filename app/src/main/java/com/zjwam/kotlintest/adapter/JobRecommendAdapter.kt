@@ -8,15 +8,14 @@ import android.view.ViewGroup
 import android.widget.TextView
 import com.zjwam.kotlintest.R
 import com.zjwam.kotlintest.bean.JobHomeBean
-import com.zjwam.kotlintest.utils.FlowLayout
+import com.zjwam.kotlintest.customview.FlowLayout
 
 class JobRecommendAdapter(context: Context) : ListBaseAdapter<JobHomeBean.Resume>() {
-    private val mLayoutInflater: LayoutInflater
+    private val mLayoutInflater: LayoutInflater = LayoutInflater.from(context)
     private var viewHolder: ViewHolder? = null
     private var item: JobHomeBean.Resume? = null
 
     init {
-        mLayoutInflater = LayoutInflater.from(context)
         mContext = context
     }
 
@@ -42,23 +41,14 @@ class JobRecommendAdapter(context: Context) : ListBaseAdapter<JobHomeBean.Resume
     }
 
     private inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val job_item_title: TextView
-        val job_item_money: TextView
-        val job_item_company: TextView
-        val job_item_time: TextView
-        val job_item_type: TextView
-        val job_item_position: TextView
-        val job_item_benefit: FlowLayout
+        val job_item_title: TextView = itemView.findViewById(R.id.job_item_title)
+        val job_item_money: TextView = itemView.findViewById(R.id.job_item_money)
+        val job_item_company: TextView = itemView.findViewById(R.id.job_item_company)
+        val job_item_time: TextView = itemView.findViewById(R.id.job_item_time)
+        val job_item_type: TextView = itemView.findViewById(R.id.job_item_type)
+        val job_item_position: TextView = itemView.findViewById(R.id.job_item_position)
+        val job_item_benefit: FlowLayout = itemView.findViewById(R.id.job_item_benefit)
 
-        init {
-            job_item_title = itemView.findViewById(R.id.job_item_title)
-            job_item_money = itemView.findViewById(R.id.job_item_money)
-            job_item_company = itemView.findViewById(R.id.job_item_company)
-            job_item_time = itemView.findViewById(R.id.job_item_time)
-            job_item_type = itemView.findViewById(R.id.job_item_type)
-            job_item_position = itemView.findViewById(R.id.job_item_position)
-            job_item_benefit = itemView.findViewById(R.id.job_item_benefit)
-        }
     }
 
     private fun initBenefit() {

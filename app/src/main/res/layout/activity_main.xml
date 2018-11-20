@@ -34,7 +34,7 @@
                     android:layout_height="50dp"
                     app:layout_collapseMode="pin"
                     android:elevation="4dp"
-                    app:title="标题">
+                    app:title="职位列表">
             </android.support.v7.widget.Toolbar>
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>

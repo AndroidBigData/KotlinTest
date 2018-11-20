@@ -16,11 +16,11 @@ object OkGoUtils {
 
     /**
      * 固定数据格式：
-     * code
-     * msg
-     * daga
+     * code:
+     * msg:
+     * daga{}
      */
-    fun <T> getRequets(url: String, tag: Any, callback: JsonCallback<T>) {
+    fun <T> getRequets(url: String, tag: Context?, callback: JsonCallback<T>) {
         OkGo.get<T>(url)
             .tag(tag)
             .cacheMode(CacheMode.NO_CACHE)

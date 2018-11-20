@@ -8,35 +8,34 @@ import com.zjwam.kotlintest.callback.BasicCallback
 import com.zjwam.kotlintest.model.IModel
 import com.zjwam.kotlintest.model.Model
 import com.zjwam.kotlintest.utils.HttpErrorMsg
+import com.zjwam.kotlintest.utils.UrlUtils
 import com.zjwam.kotlintest.view.IView
-import java.util.HashMap
 
-class Presenter: IPresenter {
+class Presenter(context: Context, iView:IView): IPresenter {
     var iView:IView?= null
     var iModel:IModel?= null
     var context:Context?=null
     var param:Map<String,String>?=null
-    constructor(context: Context, iView:IView){
+
+    init{
         this.context = context
         this.iView = iView
         iModel = Model()
     }
 
     override fun getData(page:String,isRefresh:Boolean) {
-        param = HashMap()
-        (param as HashMap<String, String>).put("page", page)
-        (param as HashMap<String, String>).put("city", "郑州")
-        iModel!!.getData("http://zkw.org.cn/api/resume/index", context, param as HashMap<String, String>, object : BasicCallback<ResponseBean<JobHomeBean>> {
+        param = hashMapOf("page" to page,"city" to "郑州")
+        iModel!!.getData(UrlUtils.jobList, context, param!!, object : BasicCallback<ResponseBean<JobHomeBean>> {
                 override fun onSuccess(response: Response<ResponseBean<JobHomeBean>>) {
                     if (isRefresh) {
                         iView!!.refresh()
                     }
                     val jobHomeBean = response.body().data
-                    iView!!.getData(jobHomeBean!!.getResume()!!, jobHomeBean!!.getCount())
+                    iView!!.getData(jobHomeBean!!.getResume()!!, jobHomeBean.getCount())
                 }
 
                 override fun onError(response: Response<ResponseBean<JobHomeBean>>) {
-                    val exception = response.getException()
+                    val exception = response.exception
                     val error = HttpErrorMsg.getErrorMsg(exception)
                     iView!!.showMsg(error)
                 }

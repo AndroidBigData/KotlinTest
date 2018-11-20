@@ -60,13 +60,13 @@
             android:textSize="12sp" />
     </RelativeLayout>
 
-    <com.zjwam.kotlintest.utils.FlowLayout
+    <com.zjwam.kotlintest.customview.FlowLayout
         android:id="@+id/job_item_benefit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginBottom="6dp">
-    </com.zjwam.kotlintest.utils.FlowLayout>
+    </com.zjwam.kotlintest.customview.FlowLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"

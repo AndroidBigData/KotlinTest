@@ -2,6 +2,7 @@ package com.zjwam.kotlintest
 
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
+import android.widget.Toast
 import com.jaeger.library.StatusBarUtil
 
 open class BaseActivity : AppCompatActivity() {
@@ -10,7 +11,11 @@ open class BaseActivity : AppCompatActivity() {
         setStatusBar()
     }
 
-    protected fun setStatusBar() {
+    private fun setStatusBar() {
         StatusBarUtil.setColor(this, ContextCompat.getColor(baseContext,R.color.colorPrimary), 60)
+    }
+
+    fun error(msg:String){
+        Toast.makeText(baseContext,msg,Toast.LENGTH_SHORT).show()
     }
 }

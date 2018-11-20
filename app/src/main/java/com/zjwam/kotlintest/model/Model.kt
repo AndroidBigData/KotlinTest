@@ -15,7 +15,7 @@ class Model : IModel{
         param: Map<String, String>,
         basicCallback: BasicCallback<ResponseBean<JobHomeBean>>
     ) {
-        var jsonCallback = object : JsonCallback<ResponseBean<JobHomeBean>>() {
+        val jsonCallback = object : JsonCallback<ResponseBean<JobHomeBean>>() {
             override fun onSuccess(response: Response<ResponseBean<JobHomeBean>>) {
                 basicCallback.onSuccess(response)
             }

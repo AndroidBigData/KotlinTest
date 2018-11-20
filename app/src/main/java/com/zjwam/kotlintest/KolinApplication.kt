@@ -32,10 +32,10 @@ class KolinApplication : Application() {
         //方法一：信任所有证书,不安全有风险
         val sslParams1 = HttpsUtils.getSslSocketFactory()
         builder.sslSocketFactory(sslParams1.sSLSocketFactory, sslParams1.trustManager)
-        OkGo.getInstance().init(this)                  //必须调用初始化
-            .setOkHttpClient(builder.build())               //建议设置OkHttpClient，不设置将使用默认的
-            .setCacheMode(CacheMode.NO_CACHE)               //全局统一缓存模式
-            .setRetryCount(3)
+        OkGo.getInstance()
+            .init(this)                        //必须调用初始化
+            .setOkHttpClient(builder.build())       //建议设置OkHttpClient，不设置将使用默认的
+            .setCacheMode(CacheMode.NO_CACHE)
+            .retryCount = 3
     }
-
 }
